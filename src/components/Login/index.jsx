@@ -60,15 +60,15 @@ const Login = () => {
               className={styles.input}
             />
             {error && <div className={styles.error_msg}> {error}</div>}
-            <button type="submit" className={styles.gree_btn}>
+            <button type="submit" className={styles.btn_signin}>
               Sign In
             </button>
           </form>
-          <div className={styles.right}></div>
-          <div className={styles.right}>
-            <h1>New Here ?</h1>
+
+          <div className={styles.new_here}>
+            <h3>New Here ?</h3>
             <Link to="/signup">
-              <button type="button" className={styles.white_btn}>
+              <button type="button" className={styles.btn_signup}>
                 Sign Up
               </button>
             </Link>
