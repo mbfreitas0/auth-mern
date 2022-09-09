@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../Form/Select.module.css";
 
-const Select = ({ text, name, options, handleOnChange, value }) => {
+const SelectPart = ({ text, name, options, handleOnChange, value }) => {
   return (
     <div className={styles.form_control}>
       <label htmlFor={name}>{text}:</label>
@@ -11,7 +11,7 @@ const Select = ({ text, name, options, handleOnChange, value }) => {
         onChange={handleOnChange}
         value={value || ""}
       >
-        <option>Selecione uma opção</option>
+        <option>Selecione uma peça</option>
         {options.map((option) => (
           <option value={option.id} key={option.id}>
             {option.name}
@@ -22,4 +22,4 @@ const Select = ({ text, name, options, handleOnChange, value }) => {
   );
 };
 
-export default Select;
+export default SelectPart;
