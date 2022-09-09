@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
+//import axios from "axios";
 import SubmitButton from "./SubmitButton";
 import styles from "../Form/Form.module.css";
 import Input from "./Input";
@@ -83,7 +84,7 @@ const ServiceForm = ({ btnText }) => {
         text="Selecione a categoria"
         options={categories}
       />
-      <Select name="part_id" text="Selecione a peça" />
+      {/* <Select name="part_id" text="Selecione a peça" /> */}
       <SubmitButton text={btnText} />
     </form>
   );
