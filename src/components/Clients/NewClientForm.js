@@ -2,38 +2,37 @@ import React from "react";
 // useNavigate é usado para após ser realizado o post, direcionar o usuário para uma nova
 //página.
 import { useNavigate } from "react-router-dom";
-import styles from "../Services/NewServiceForm.module.css";
-import ServiceForm from "../Form/ServiceForm";
+import styles from "../Clients/NewClientForm.module.css";
+import ClientForm from "../Form/ClientForm";
 
-const NewServiceForm = () => {
+const NewClientForm = () => {
   const history = useNavigate();
 
-  function createPost(project) {
+  function createPost(client) {
     //Initialize service
     // project.cost = 0;
-    // project.service = [];
+    client = [];
 
-    fetch("http://localhost:5000/services", {
+    fetch("http://localhost:5000/clients", {
       method: "POST",
       headers: { "Content-type": "application/json" },
-      body: JSON.stringify(project),
+      body: JSON.stringify(client),
     })
       .then((resp) => resp.json())
       .then((data) => {
         console.log(data);
-        history("/servicelist", {
-          message: "Serviço criado com sucesso !",
+        history("/client-list", {
+          message: "Cliente criado com sucesso !",
         });
       })
       .catch((err) => console.log(err));
   }
   return (
     <div className={styles.newproject_container}>
-      <h1>Criar Serviços</h1>
-      <p>Crie um Serviço para adicionar peças e/ou mão de obra</p>
-      <ServiceForm handleSubmit={createPost} btnText="Criar Serviço" />
+      <h1>Cadastrar Clientes</h1>
+      <ClientForm handleSubmit={createPost} btnText="Criar Cliente" />
     </div>
   );
 };
 
-export default NewServiceForm;
+export default NewClientForm;

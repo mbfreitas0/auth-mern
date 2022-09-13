@@ -2,6 +2,8 @@ import React from "react";
 import styles from "../Home/Home.module.css";
 import savings from "../../img/banner.jpg";
 import LinkButton from "../LinkButton/LinkButton";
+// import Navbar from "../layout/Navbar/Navbar";
+// import Footer from "../layout/Footer/Footer";
 
 const Home = () => {
   return (

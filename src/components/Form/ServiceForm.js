@@ -1,18 +1,15 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
-//import axios from "axios";
+import React, { useState, useEffect } from "react";
 import SubmitButton from "./SubmitButton";
 import styles from "../Form/Form.module.css";
 import Input from "./Input";
 import Select from "./Select";
 import SelectPart from "./SelectPart";
 
-const ServiceForm = ({ btnText }) => {
-  // const [project, SetProject] = useState([]);
-  const [service, SetService] = useState([]);
-  const [category, SetCategory] = useState([]);
-
+const ServiceForm = ({ handleSubmit, btnText, projectData }) => {
   const [part, SetPart] = useState([]);
+  // const [service, SetService] = useState([]);
+  const [category, SetCategory] = useState([]);
+  const [project, SetProject] = useState(projectData || {});
 
   //Carregar o select das categorias
   useEffect(() => {
@@ -46,16 +43,16 @@ const ServiceForm = ({ btnText }) => {
 
   const submit = (e) => {
     e.preventDefault();
-    handleSubmit(service);
+    handleSubmit(project);
   };
 
   function handleChange(e) {
-    setService({ ...service, [e.target.firstName]: e.target.value });
+    SetProject({ ...project, [e.target.name]: e.target.value });
   }
 
   function handleCategory(e) {
-    SetService({
-      ...service,
+    SetProject({
+      ...project,
       category: {
         id: e.target.value,
         name: e.target.options[e.target.selectedIndex].text,
@@ -64,8 +61,8 @@ const ServiceForm = ({ btnText }) => {
   }
 
   function handlePart(e) {
-    SetService({
-      ...service,
+    SetProject({
+      ...project,
       part: {
         id: e.target.value,
         name: e.target.options[e.target.selectedIndex].text,
@@ -81,7 +78,7 @@ const ServiceForm = ({ btnText }) => {
         name="firstName"
         placeholder="Nome do Cliente"
         handleOnChange={handleChange}
-        value={service.firstname ? service.firstname : ""}
+        value={project.firstName ? project.firstName : ""}
       />
       <Input
         type="text"
@@ -89,7 +86,7 @@ const ServiceForm = ({ btnText }) => {
         name="lastName"
         placeholder="Sobrenome"
         handleOnChange={handleChange}
-        value={service.firstname ? service.lastname : ""}
+        value={project.lastName ? project.lastName : ""}
       />
       <Input
         type="text"
@@ -97,7 +94,7 @@ const ServiceForm = ({ btnText }) => {
         name="tel"
         placeholder="Telefone"
         handleOnChange={handleChange}
-        value={service.tel ? service.tel : ""}
+        value={project.tel ? project.tel : ""}
       />
       <Input
         type="text"
@@ -105,7 +102,7 @@ const ServiceForm = ({ btnText }) => {
         name="cep"
         placeholder="CEP"
         handleOnChange={handleChange}
-        value={service.cep ? service.cep : ""}
+        value={project.cep ? project.cep : ""}
       />
       <Input
         type="text"
@@ -113,7 +110,7 @@ const ServiceForm = ({ btnText }) => {
         name="tipocep"
         placeholder="Tipo CEP"
         handleOnChange={handleChange}
-        value={service.tipocep ? service.tipocep : ""}
+        value={project.tipocep ? project.tipocep : ""}
       />
       <Input
         type="text"
@@ -121,7 +118,7 @@ const ServiceForm = ({ btnText }) => {
         name="subtipo"
         placeholder="Sub tipo CEP"
         handleOnChange={handleChange}
-        value={service.subtipo ? service.subtipo : ""}
+        value={project.subtipo ? project.subtipo : ""}
       />
       <Input
         type="text"
@@ -129,7 +126,7 @@ const ServiceForm = ({ btnText }) => {
         name="uf"
         placeholder="UF"
         handleOnChange={handleChange}
-        value={service.uf ? service.uf : ""}
+        value={project.uf ? project.uf : ""}
       />
       <Input
         type="text"
@@ -137,7 +134,7 @@ const ServiceForm = ({ btnText }) => {
         name="cidade"
         placeholder="Cidade"
         handleOnChange={handleChange}
-        value={service.cidade ? service.cidade : ""}
+        value={project.cidade ? project.cidade : ""}
       />
       <Input
         type="text"
@@ -145,7 +142,7 @@ const ServiceForm = ({ btnText }) => {
         name="bairro"
         placeholder="Bairro"
         handleOnChange={handleChange}
-        value={service.bairro ? service.bairro : ""}
+        value={project.bairro ? project.bairro : ""}
       />
       <Input
         type="text"
@@ -153,7 +150,7 @@ const ServiceForm = ({ btnText }) => {
         name="endereco"
         placeholder="Endereço"
         handleOnChange={handleChange}
-        value={service.endereco ? service.endereco : ""}
+        value={project.endereco ? project.endereco : ""}
       />
       <Input
         type="text"
@@ -161,7 +158,7 @@ const ServiceForm = ({ btnText }) => {
         name="numero"
         placeholder="Número"
         handleOnChange={handleChange}
-        value={service.numero ? service.numero : ""}
+        value={project.numero ? project.numero : ""}
       />
       <Input
         type="text"
@@ -169,7 +166,7 @@ const ServiceForm = ({ btnText }) => {
         name="complemento"
         placeholder="Complemento"
         handleOnChange={handleChange}
-        value={service.complemento ? service.complemento : ""}
+        value={project.complemento ? project.complemento : ""}
       />
       <Input
         type="text"
@@ -177,7 +174,7 @@ const ServiceForm = ({ btnText }) => {
         name="codigoIBGE"
         placeholder="Código do IBGE"
         handleOnChange={handleChange}
-        value={service.codigoIBGE ? service.codigoIBGE : ""}
+        value={project.codigoIBGE ? project.codigoIBGE : ""}
       />
       <Input
         type="text"
@@ -185,21 +182,21 @@ const ServiceForm = ({ btnText }) => {
         name="objeto"
         placeholder="Descreva o objeto para o conserto"
         handleOnChange={handleChange}
-        value={service.objeto ? service.objeto : ""}
+        value={project.objeto ? project.objeto : ""}
       />
       <Select
         name="category_id"
         text="Selecione a categoria"
         options={category}
         handleOnChange={handleCategory}
-        value={service.category ? service.category.id : ""}
+        value={project.category ? project.category.id : ""}
       />
       <Select
         name="part_id"
         text="Selecione a peça"
         options={part}
         handleOnChange={handlePart}
-        value={service.part ? service.part.id : ""}
+        value={project.part ? project.part.id : ""}
       />
 
       <SubmitButton text={btnText} />
