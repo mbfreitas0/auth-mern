@@ -12,6 +12,10 @@ const ClientCard = ({
   number,
   handleRemove,
 }) => {
+  const remove = (e) => {
+    e.preventDefault();
+    handleRemove(id);
+  };
   return (
     <div className={styles.project_card}>
       <h4>{firstName}</h4>
@@ -37,7 +41,7 @@ const ClientCard = ({
           <BsPencil />
           Editar
         </Link>
-        <button>
+        <button onClick={remove}>
           <BsFillTrashFill />
           Excluir
         </button>
