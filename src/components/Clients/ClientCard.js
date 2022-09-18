@@ -37,7 +37,7 @@ const ClientCard = ({
         {number}
       </p>
       <div className={styles.project_card_actions}>
-        <Link to="/">
+        <Link to={`/client-update/${id}`}>
           <BsPencil />
           Editar
         </Link>

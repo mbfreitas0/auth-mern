@@ -73,8 +73,8 @@ const ClientList = () => {
               handleRemove={removeClient}
             />
           ))}
-        {removeLoading && <Loading />}
-        {removeLoading && client.length === 0 && (
+        {/* {removeLoading && <Loading />} */}
+        {<Loading /> && removeLoading && client.length === 0 && (
           <p>Não projetos cadastrados !</p>
         )}
       </Container>

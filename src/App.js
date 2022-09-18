@@ -7,6 +7,7 @@ import ServiceList from "./components/Services/ServiceList";
 import ClientList from "./components/Clients/ClientList";
 //import NewClientForm from "./components/Clients/NewClientForm";
 import ClientCreate from "./components/Clients/ClientCreate";
+import ClientsUpdate from "./components/Clients/ClientsUpdate";
 
 function App() {
   const user = localStorage.getItem("token");
@@ -14,13 +15,14 @@ function App() {
   return (
     <Routes>
       {user && <Route path="/" exact element={<Main />} />}
-      <Route path="/signup" exact element={<Signup />} />
-      <Route path="/servicelist" exact element={<ServiceList />} />
-      <Route path="/client-create" exact element={<ClientCreate />} />
-      <Route path="/client-list" exact element={<ClientList />} />
-      <Route path="/home" exact element={<Home />} />
-      <Route path="/login" exact element={<Login />} />
-      <Route path="/" exact element={<Navigate replace to="/login" />} />
+      <Route path="/signup" element={<Signup />} />
+      <Route path="/servicelist" element={<ServiceList />} />
+      <Route path="/client-create" element={<ClientCreate />} />
+      <Route path="/client-list" element={<ClientList />} />
+      <Route path="/client-update/:id" element={<ClientsUpdate />} />
+      <Route path="/home" element={<Home />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/" element={<Navigate replace to="/login" />} />
     </Routes>
   );
 }
